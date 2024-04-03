@@ -1,25 +1,3 @@
-# Step1 
-Build Docker Image Using  This Command
-
-docker build -t image_name:version .
-
-# Step2
-Run the docker image
-
-docker run -d --name image_name  -p 5000:5000 name_of_image_which_was_build
-
-# Step3 
-open http://127.0.0.1:5000/
-
-Now enter all details and you will get the thumbnail image
-
-or 
-you can optionally use http://127.0.0.1:5000/thumbnail as a post request
-
-where body should have height, width, fov, theta and phi and a equirectangular image
-
-The Height and Weight are optional they have a default value of 300
-
 Image Thumbnail Generator
 This Docker image is designed to generate thumbnail images from equirectangular images. It utilizes a web service running on port 5000.
 
@@ -41,7 +19,6 @@ Step 3: Access the Web Service
 Once the container is running, access the web service by opening http://127.0.0.1:5000/ in your web browser and enter the values and you will get a thumbnail image.
 
 Or 
-
 
 You can generate thumbnails by submitting a POST request to http://127.0.0.1:5000/thumbnail. The request body should include the following parameters:
 
