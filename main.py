@@ -1,6 +1,6 @@
 from flask import send_file, Flask, request, render_template
 from werkzeug.utils import secure_filename
-from pers.lib.Equirec2Perspec import Equirectangular
+from equi2pers.lib.Equirec2Perspec import Equirectangular
 import cv2
 import os
 import json
