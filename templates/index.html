@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Upload Image</h2>
+
+<form id="upload-form" action="/thumbnail" method="post" enctype="multipart/form-data">
+  Select image:
+  <input type="file" id="img" name="img"><br><br>
+  FOV:
+  <input type="text" id="fov" name="fov"><br><br>
+  Theta:
+  <input type="text" id="theta" name="theta"><br><br>
+  Phi:
+  <input type="text" id="phi" name="phi"><br><br>
+  Height:
+  <input type="text" id="height" name="height"><br><br>
+  Width:
+  <input type="text" id="width" name="width"><br><br>
+  <input type="submit" value="Submit">
+</form>
+
+<div id="image-container"></div>
+
+
+<script>
+  document.getElementById('upload-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+  
+    var formData = new FormData(event.target);
+  
+    fetch('/thumbnail', {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+      var img = document.createElement('img');
+      img.src = 'data:image/png;base64,' + data.image;
+  
+      document.getElementById('image-container').appendChild(img);
+    })
+    .catch(error => console.error('Error:', error));
+  });
+  </script>
+
+</body>
+</html>
